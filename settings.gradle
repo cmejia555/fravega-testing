@@ -1,2 +1,12 @@
 rootProject.name = 'fravega'
 
+assignProperty('browserName', 'firefox')
+assignProperty('appUrl', 'http://www.fravega.com')
+assignProperty('appDefaultWait', '10')
+assignProperty('pageLoadWait', '300')
+
+def assignProperty(key, defaultValue){
+    if(System.getProperty(key) == null){
+        System.setProperty(key, defaultValue)
+    }
+}
