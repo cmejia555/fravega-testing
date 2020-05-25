@@ -6,6 +6,7 @@ public class ConfigHelper {
     public static final String APP_URL = "appUrl";
     public static final String APP_DEFAULT_WAIT = "appDefaultWait";
     public static final String PAGE_LOAD_WAIT = "pageLoadWait";
+    public static final String DRIVER_PATH = "driverPath";
 
     public static String getBrowserName() {
         return System.getProperty(BROWSER_NAME);
@@ -21,5 +22,9 @@ public class ConfigHelper {
 
     public static int getPageLoadTimeOut() {
         return Integer.parseInt(System.getProperty(PAGE_LOAD_WAIT));
+    }
+
+    public static String getDriverPath() {
+        return System.getProperty(DRIVER_PATH);
     }
 }
