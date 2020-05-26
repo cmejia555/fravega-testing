@@ -17,6 +17,7 @@ public class ProductsPage extends BasePage {
     private String brandCheckBoxTemplate = "//li[@name='brandAggregation']/a/label[text()='%s']";
     private By items = By.xpath("//ul[@name='itemsGrid']/li");
     private By breadcrumb = By.xpath("//div[@name='breadcrumb']/ul/li/a[@cursor='default']");
+    private By showAllBrands = By.xpath("//ul/a[text()='Ver todas']");
 
     public ProductsPage() {
         validatePage();
@@ -40,8 +41,13 @@ public class ProductsPage extends BasePage {
 
     public void filterByBrand(String brand) {
         By locator = By.xpath(String.format(brandCheckBoxTemplate, brand));
-        Assert.assertTrue("No se encontro la marca: " + brand, find(locator));
-        click(locator);
+        if (find(locator)) {
+            click(locator);
+        } else {
+            Assert.assertTrue("No se encontro el link a 'Ver todas'", find(showAllBrands));
+            click(showAllBrands);
+            new BrandsPage().selectFilter(brand);
+        }
     }
 
     public void validateItemsGrid(int gridSize, String itemTitle) {
