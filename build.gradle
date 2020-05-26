@@ -22,4 +22,6 @@ task allTest(type:Test) {
     group = 'cmejia'
     systemProperties = System.properties
     include '**/*Test.class'
+
+    outputs.upToDateWhen {false}
 }
