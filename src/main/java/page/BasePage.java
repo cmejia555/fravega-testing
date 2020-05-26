@@ -24,7 +24,9 @@ public class BasePage {
             status = driverWait.until(ExpectedConditions.and(
                     ExpectedConditions.presenceOfElementLocated(locator),
                     ExpectedConditions.visibilityOfElementLocated(locator)));
-        } catch (NoSuchElementException | TimeoutException e) {
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
             e.printStackTrace();
         }
 
