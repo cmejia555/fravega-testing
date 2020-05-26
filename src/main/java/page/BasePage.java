@@ -17,7 +17,7 @@ public class BasePage {
         driverWait = new WebDriverWait(driver, ConfigHelper.getAppDefaultWait());
     }
 
-    protected boolean exists(By locator) {
+    protected boolean find(By locator) {
         boolean status = false;
 
         try {

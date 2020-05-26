@@ -1,4 +1,4 @@
-package pages;
+package frontend.pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -14,15 +14,15 @@ public class HomePage extends BasePage {
     }
 
     private void validatePage() {
-        Assert.assertTrue("No se encontro el campo de 'Buscar productos'", exists(searchInput));
-        Assert.assertTrue("No se encontro la opcion para ingresar a 'Mi cuenta'", exists(linkToMyAccount));
+        Assert.assertTrue("No se encontro el campo de 'Buscar productos'", find(searchInput));
+        Assert.assertTrue("No se encontro la opcion para ingresar a 'Mi cuenta'", find(linkToMyAccount));
     }
 
     public void searchProduct(String product) {
-        Assert.assertTrue("No se encontro el campo de 'Buscar productos'", exists(searchInput));
+        Assert.assertTrue("No se encontro el campo de 'Buscar productos'", find(searchInput));
         sendKeys(searchInput, product);
 
-        Assert.assertTrue("No se encontro el boton de busqueda", exists(searchButton));
+        Assert.assertTrue("No se encontro el boton de busqueda", find(searchButton));
         click(searchButton);
     }
 }
