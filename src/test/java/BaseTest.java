@@ -2,7 +2,7 @@ import core.WebDriver;
 import org.junit.After;
 import org.junit.Before;
 
-public class TestBase {
+public class BaseTest {
 
     @Before
     public void setUp() {
