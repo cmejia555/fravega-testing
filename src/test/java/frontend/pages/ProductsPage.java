@@ -1,4 +1,4 @@
-package pages;
+package frontend.pages;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -23,29 +23,29 @@ public class ProductsPage extends BasePage {
     }
 
     private void validatePage() {
-        Assert.assertTrue("No se encontro el menu lateral", exists(sideBarSection));
-        Assert.assertTrue("No se encontro la grilla de items con los productos", exists(itemsGridSection));
+        Assert.assertTrue("No se encontro el menu lateral", find(sideBarSection));
+        Assert.assertTrue("No se encontro la grilla de items con los productos", find(itemsGridSection));
     }
 
     public void validateSearchedProduct(String product) {
-        Assert.assertTrue("No se encontro el titulo del menu lateral", exists(sideBarTitle));
+        Assert.assertTrue("No se encontro el titulo del menu lateral", find(sideBarTitle));
         Assert.assertEquals("El menu lateral deberia tener como titulo: " + product, product, getText(sideBarTitle));
     }
 
     public void filterByCategory(String category) {
         By locator = By.xpath(String.format(categoryTitleTemplate, category));
-        Assert.assertTrue("No se encontro la categoria: " + category, exists(locator));
+        Assert.assertTrue("No se encontro la categoria: " + category, find(locator));
         click(locator);
     }
 
     public void filterByBrand(String brand) {
         By locator = By.xpath(String.format(brandCheckBoxTemplate, brand));
-        Assert.assertTrue("No se encontro la marca: " + brand, exists(locator));
+        Assert.assertTrue("No se encontro la marca: " + brand, find(locator));
         click(locator);
     }
 
     public void validateItemsGrid(int gridSize, String itemTitle) {
-        Assert.assertTrue("No se encontraron items en la grilla", exists(items));
+        Assert.assertTrue("No se encontraron items en la grilla", find(items));
         List<WebElement> itemList = findElements(items);
 
         Assert.assertEquals("El tamaño de la grilla no coincide con lo que se muestra en pantalla",
@@ -58,7 +58,7 @@ public class ProductsPage extends BasePage {
     }
 
     public void validateAppliedCategoryFilter(String filter) {
-        Assert.assertTrue("No se encontro el breadcrumb", exists(breadcrumb));
+        Assert.assertTrue("No se encontro el breadcrumb", find(breadcrumb));
         Assert.assertEquals("En el breadcrumb de la pagina deberia visualizarse: " + filter,
                 filter, getText(breadcrumb));
     }

@@ -1,3 +1,5 @@
+package frontend;
+
 import core.WebDriver;
 import org.junit.After;
 import org.junit.Before;

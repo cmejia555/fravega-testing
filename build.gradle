@@ -21,14 +21,22 @@ dependencies {
     compile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
 }
 
-task allTest(type:Test) {
+task allTest(type: Test) {
     group = 'cmejia'
     systemProperties = System.properties
-    include '**/*Test.class'
+    include '**/frontend/*Test.class'
+    include '**/backend/*.class'
 
     outputs.upToDateWhen {false}
 }
 
+task frontendTest(type: Test) {
+    group = 'cmejia'
+    systemProperties = System.properties
+    include '**/frontend/*Test.class'
+
+    outputs.upToDateWhen {false}
+}
 task backendTest(type: Test) {
     group = 'cmejia'
     include '**/backend/*.class'
