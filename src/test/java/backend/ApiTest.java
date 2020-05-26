@@ -1,5 +1,8 @@
 package backend;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -8,10 +11,13 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.*;
 
-
+@DisplayName("Breweries Api Test")
+@Epic("Backend")
+@Feature("Breweries")
 public class ApiTest extends BaseApiTest {
 
     @Test
+    @DisplayName("Ejecucion de request basico")
     public void test_01_basicApiTest() {
         String endpoint = "/breweries/autocomplete";
         HashMap<String, String> queries = new HashMap<>();
@@ -22,6 +28,7 @@ public class ApiTest extends BaseApiTest {
     }
 
     @Test
+    @DisplayName("Filtra los resultados del response por un campo")
     public void test_02_filterResults() {
         String filter = "Lagunitas Brewing Co";
         String endpoint = "/breweries/autocomplete";
@@ -35,6 +42,7 @@ public class ApiTest extends BaseApiTest {
     }
 
     @Test
+    @DisplayName("Muestra los detalles del resultado filtrado")
     public void test_03_getDetails() {
         String filter = "Lagunitas Brewing Co";
         HashMap<String, String> queries = new HashMap<>();
@@ -51,6 +59,7 @@ public class ApiTest extends BaseApiTest {
     }
 
     @Test
+    @DisplayName("Validacion de los campos de la cerveria con state: California")
     public void test_04_validateBrewery() {
         String filter = "Lagunitas Brewing Co";
         HashMap<String, String> queries = new HashMap<>();

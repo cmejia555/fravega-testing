@@ -1,13 +1,20 @@
 package frontend;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import frontend.pages.HomePage;
 import frontend.pages.ProductsPage;
 
 
+@DisplayName("Fravega Test")
+@Epic("Frontend")
 public class FravegaTest extends BaseTest {
 
     @Test
+    @DisplayName("Buscar producto")
+    @Description("Se verifica que en el menu lateral aparezca como titulo el producto buscado")
     public void test_01_searchSomething() {
         String product = "Heladera";
 
@@ -19,6 +26,8 @@ public class FravegaTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Agregar filtros y validar")
+    @Description("Se verifica los items de la grilla de resultados y los filtros aplicados")
     public void test_02_filterProduct() {
         String product = "Heladera";
         String categoryFilter = "Heladeras, Freezers y Cavas";
