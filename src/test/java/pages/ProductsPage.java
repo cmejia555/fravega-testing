@@ -4,6 +4,7 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import page.BasePage;
 
 import java.util.List;
 

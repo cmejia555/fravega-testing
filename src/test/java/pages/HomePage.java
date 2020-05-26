@@ -2,6 +2,7 @@ package pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import page.BasePage;
 
 public class HomePage extends BasePage {
     private final By searchInput = By.xpath("//form/input[@placeholder='Buscar productos']");

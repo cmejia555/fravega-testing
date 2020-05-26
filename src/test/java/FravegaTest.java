@@ -3,8 +3,7 @@ import pages.HomePage;
 import pages.ProductsPage;
 
 
-public class FravegaTest extends TestBase {
-
+public class FravegaTest extends BaseTest {
 
     @Test
     public void test_01_searchSomething() {

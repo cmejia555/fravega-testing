@@ -1,4 +1,4 @@
-package pages;
+package page;
 
 import core.ConfigHelper;
 import core.WebDriver;
