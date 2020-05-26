@@ -1,6 +1,8 @@
+package frontend;
+
 import org.junit.Test;
-import pages.HomePage;
-import pages.ProductsPage;
+import frontend.pages.HomePage;
+import frontend.pages.ProductsPage;
 
 
 public class FravegaTest extends BaseTest {
