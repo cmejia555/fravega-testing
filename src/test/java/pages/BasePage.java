@@ -50,4 +50,8 @@ public class BasePage {
     protected void click(By locator) {
         get(locator).click();
     }
+
+    protected String getText(By locator) {
+        return get(locator).getText();
+    }
 }
