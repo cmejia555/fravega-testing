@@ -1,5 +1,6 @@
 package frontend.pages;
 
+import io.qameta.allure.Step;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -20,7 +21,7 @@ public class ProductsPage extends BasePage {
     private By showAllBrands = By.xpath("//ul/a[text()='Ver todas']");
 
     public ProductsPage() {
-        validatePage();
+        //validatePage();
     }
 
     private void validatePage() {
@@ -28,17 +29,20 @@ public class ProductsPage extends BasePage {
         Assert.assertTrue("No se encontro la grilla de items con los productos", find(itemsGridSection));
     }
 
+    @Step("Validar producto buscado")
     public void validateSearchedProduct(String product) {
         Assert.assertTrue("No se encontro el titulo del menu lateral", find(sideBarTitle));
         Assert.assertEquals("El menu lateral deberia tener como titulo: " + product, product, getText(sideBarTitle));
     }
 
+    @Step("Filtrar por categoria")
     public void filterByCategory(String category) {
         By locator = By.xpath(String.format(categoryTitleTemplate, category));
         Assert.assertTrue("No se encontro la categoria: " + category, find(locator));
         click(locator);
     }
 
+    @Step("Filtrar por marca")
     public void filterByBrand(String brand) {
         By locator = By.xpath(String.format(brandCheckBoxTemplate, brand));
         if (find(locator)) {
@@ -50,6 +54,7 @@ public class ProductsPage extends BasePage {
         }
     }
 
+    @Step("Validar items de grilla")
     public void validateItemsGrid(int gridSize, String itemTitle) {
         Assert.assertTrue("No se encontraron items en la grilla", find(items));
         List<WebElement> itemList = findElements(items);
@@ -63,6 +68,7 @@ public class ProductsPage extends BasePage {
         }
     }
 
+    @Step("Validar filtro de categoria aplicada")
     public void validateAppliedCategoryFilter(String filter) {
         Assert.assertTrue("No se encontro el breadcrumb", find(breadcrumb));
         Assert.assertEquals("En el breadcrumb de la pagina deberia visualizarse: " + filter,

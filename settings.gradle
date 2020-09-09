@@ -4,7 +4,7 @@ assignProperty('browserName', 'chrome')
 assignProperty('appUrl', 'http://www.fravega.com')
 assignProperty('appDefaultWait', '10')
 assignProperty('pageLoadWait', '300')
-assignProperty('driverPath', 'absolute-path')
+assignProperty('driverPath', '/home/cmejia/aur/chromedriver/src/chromedriver')
 
 def assignProperty(key, defaultValue){
     if(System.getProperty(key) == null){

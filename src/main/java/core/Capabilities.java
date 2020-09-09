@@ -11,6 +11,7 @@ public class Capabilities {
         chromeOptions.addArguments("--lang=es");
         chromeOptions.addArguments("--start-maximized");
         chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--incognito");
         chromeCapabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
         return chromeCapabilities;
     }

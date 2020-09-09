@@ -12,7 +12,7 @@ import frontend.pages.ProductsPage;
 @Epic("Frontend")
 public class FravegaTest extends BaseTest {
 
-    //@Test
+    @Test
     @DisplayName("Buscar producto")
     @Description("Se verifica que en el menu lateral aparezca como titulo el producto buscado")
     public void test_01_searchSomething() {
