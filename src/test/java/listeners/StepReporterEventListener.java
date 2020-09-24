@@ -8,6 +8,14 @@ import io.qameta.allure.model.StepResult;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.json.JsonException;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,6 +35,7 @@ public class StepReporterEventListener implements StepLifecycleListener {
             savePageSource();
         }
         this.takeScreenShot();
+        this.saveLog();
     }
 
     @Attachment("Step screenshot")
@@ -51,6 +60,37 @@ public class StepReporterEventListener implements StepLifecycleListener {
             e.printStackTrace();
         }
         return pagesource;
+    }
+
+    @Attachment(
+            value = "browser.log",
+            type = "text/plain"
+    )
+    public byte[] saveLog() {
+        List<LogEntry> logEntries;
+        try {
+            logEntries = WebDriver.getInstance().manage().logs().get(LogType.BROWSER).getAll();
+        } catch (JsonException e) {
+            String message = "WARNING: Network log is not available";
+            LOGGER.warning(message);
+            return message.getBytes();
+        }
+
+        return this.saveLog(logEntries);
+    }
+
+    public byte[] saveLog(List<LogEntry> logEntries) {
+        ByteArrayOutputStream logOutputStream = new ByteArrayOutputStream();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        logEntries.forEach((entry) -> {
+            try {
+                logOutputStream.write(String.format("[%s] %s: %s \n", entry.getLevel().getName(), simpleDateFormat.format(entry.getTimestamp()), entry.getMessage()).getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
+        return logOutputStream.toByteArray();
     }
 
 }
